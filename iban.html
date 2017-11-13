@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IBAN</title>
+    <style>
+        .text{
+            font-size: 15px;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+        
+        .ibantext{
+            height: 15px;
+            width: 150;
+            border: 1px;
+        }
+    </style>
+</head>
+<body align="center">
+    <table align="center">
+        <tr>
+            <td>
+                <div class="text">Choose your bank:</div>
+                <select id="bank">
+                    <option value="8420">BKS Bank</option>
+                    <option value="7500">ČSOB</option>
+                    <option value="8170">ČSOB Stavebná sporiteľňa</option>
+                    <option value="5600">Prima banka</option>
+                    <option value="8330">Fio banka</option>
+                    <option value="7300">ING Bank</option>
+                    <option value="8320">J&T Banka</option>
+                    <option value="8360">mBank</option>
+                    <option value="5200">OTP banka</option>
+                    <option value="6500">Poštová banka</option>
+                    <option value="5900">Prvá stavebná sporiteľňa</option>
+                    <option value="0900">Slovenská sporiteľňa</option>
+                    <option value="1100">Tatra banka</option>
+                    <option value="1111">UniCredit Bank</option>
+                    <option value="3100">SBERBANK</option>
+                    <option value="0200">VÚB banka</option>
+                    <option value="8410">ZUNO BANK</option>
+                    <option value="1100">Raiffeisen BANK</option>
+                </select>
+                <div class="text">Enter your account number:</div>
+                <input class="ACCtext" id="ACCtext" type="text" size="10" value="" placeholder="1987426353">
+                <button id="getiban" onclick="getIBAN()">Get IBAN</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="text" id="youriban"onclick="getIBAN()"></div>
+                <div id="IBANtext" class="ibantext"></div>                
+            </td>
+        </tr>
+    </table>
+    
+    <script type="text/javascript">
+              
+        function getIBAN (){
+            document.getElementById('youriban').innerHTML="Your IBAN:";
+            
+            var bankcode;
+            bankcode = parseInt(document.getElementById('bank').value, 10);
+            console.log(bankcode);
+            
+            var accnumber;           
+            accnumber = parseInt(document.getElementById('ACCtext').value, 10);
+            console.log(accnumber);
+            
+            var iban;
+            iban = bankcode+"000000"+accnumber+"282000";
+            console.log(iban);
+            
+            var x,y;
+            x = modulo(iban, 97);
+            console.log(x);
+            y = 98 - x;
+            console.log(y);
+            
+            
+            
+        function modulo( aNumStr, aDiv) {
+            var tmp = "";
+            var  i, r;
+            for ( i=0; i<aNumStr.length ; i++)
+            {
+                tmp += aNumStr.charAt( i);
+                r = tmp % aDiv;
+                tmp = r.toString( 10);
+            }
+            return tmp / 1;
+        }
+            
+            document.getElementById("IBANtext").innerHTML= "SK"+y+bankcode+"000000"+accnumber;
+            //document.getElementById("IBANadministration").innerHTML= "SK00 "+bankcode+" 0000 00"+accnumber;
+        }
+    
+    </script>
+    
+</body>
+</html>
