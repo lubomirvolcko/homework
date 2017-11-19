@@ -165,37 +165,29 @@ int main()
    	printf("\n\nOldest student: %s - %d, ", topagestudent, topage);
    
 	// 9. write down number of student that their name is longer than 7 characters
-	printf("\n\nStudents with longer name than 7 characters: ");
-	/*int charcount;
+	int charcount=0;
 	for(i=0;i<20;i++)
 	{	
-		int ch;
-		for(ch=0; student[i].name[ch]; ch++) 
-		{
-        	charcount ++;
-    	}
-		if(charcount>7)
-			printf("\n%s", student[i].name);
-	}*/
+		if(strlen(student[i].name)>7)
+			charcount++;
+	}
+	printf("\n\nStudents with longer name than 7 characters: %d", charcount);
 
 	// 10. sort students by salary ascending and write down the list
 	printf("\n\nStudents with ascending sort of salary: ");
 	/*for(i=0;i<19;i++)
 	{
-		typedef struct{
-   		char name[20];
-   		int age;
-   		float salary;
-   		address_detail address;
-		} temp;
-		temp studentx[1];
+		
+		int tempstudent[20];
+		int temp;
 		for(j=i+1;j<20;j++)
 		{
-			if(student[i].salary>student[j].salary)
+			tempstudent[i];
+			if(student[tempstudent[j]].salary > student[tempstudent[j+1]].salary)
 			{
-				studentx[0]=student[i];
+				temp=student[i];
 				student[i]=student[j];
-				student[j]=studentx[0];
+				student[j]=temp;
 			}
 		}
 		printf("\n%s - %1.2f", student[i].name, student[i].salary);*/
